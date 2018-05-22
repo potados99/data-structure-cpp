@@ -83,12 +83,9 @@ void Test::DoTest() {
 #elif defined LINKED_TREE
     TreeTest();
 #endif
-    
-#ifdef __WIN32__
-    std::cout << "GOD DAMN" << std::endl;
+
 #ifdef _MSC_VER
-    std::cout << "VS" << std::endl;
-#endif
-    getchar();
+	std::cout << std::endl << "God damn Micro Soft" << std::endl;
+	getchar();
 #endif
 }
