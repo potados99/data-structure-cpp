@@ -10,6 +10,6 @@
 
 int main(int argc, const char * argv[]) {
     Test::DoTest();
-    
+	getchar();
     return 0;
 }

@@ -10,6 +10,8 @@
 #define LinkedList_hpp
 
 #include <iostream>
+#include <functional>
+#include <string>
 
 namespace LinkedList {
     
