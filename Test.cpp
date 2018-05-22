@@ -12,26 +12,22 @@
 
 #ifdef LINKED_LIST
 #include "LinkedList.hpp"
-using namespace LinkedList;
 
 #elif defined LINKED_STACK
 #include "LinkedStack.hpp"
-using namespace LinkedStack;
 
 #elif defined LINKED_QUEUE
 #include "LinkedQueue.hpp"
-using namespace LinkedQueue;
 
 #elif defined LINKED_TREE
 #include "LinkedTree.hpp"
-using namespace LinkedTree;
 
 #endif
 
 #if defined LINKED_LIST
 void Test::ListTest() {
     
-    List<std::string> strList;
+    LinkedList::List<std::string> strList;
     
     strList.Append("Hello");
     strList.Append("World");
@@ -40,7 +36,7 @@ void Test::ListTest() {
     
     strList.Print();
     
-    List<int> intList;
+    LinkedList::List<int> intList;
     int count = 0;
     
     intList.Append(256);            // [36]
