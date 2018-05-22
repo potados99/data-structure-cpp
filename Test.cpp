@@ -87,8 +87,11 @@ void Test::DoTest() {
 #ifdef __APPLE__
     std::cout << std::endl << ":)" << std::endl;
     
+#elif defined __unix__
+	std::cout << std::endl << ":o" << std::endl;
+
 #elif defined _MSC_VER
-	std::cout << std::endl << "God damn Micro Soft" << std::endl;
+	std::cout << std::endl << ":(" << std::endl;
 	getchar();
     
 #endif
