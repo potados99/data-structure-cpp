@@ -39,12 +39,12 @@ void Test::ListTest() {
     LinkedList::List<int> intList;
     int count = 0;
     
-    intList.Append(256);            // [36]
-    intList.Insert(0, 32);          // [77, 36]
-    intList.Insert(0, 8);           // [88, 77, 36]
-    intList.Insert(1, 16);          // [88, 96, 77, 36]
-    intList.Insert(-1, 128);        // [88, 96, 77, 100, 36]
-    intList.Insert(-2, 64);         // [88, 96, 77, 1101, 100, 36]
+    intList.Append(256);
+    intList.Insert(0, 32);
+    intList.Insert(0, 8);
+    intList.Insert(1, 16);
+    intList.Insert(-1, 128);
+    intList.Insert(-2, 64);
     
     intList.ForEach([&count](int data) {
         count += data;
@@ -82,5 +82,13 @@ void Test::DoTest() {
     QueueTest();
 #elif defined LINKED_TREE
     TreeTest();
+#endif
+    
+#ifdef __WIN32__
+    std::cout << "GOD DAMN" << std::endl;
+#ifdef _MSC_VER
+    std::cout << "VS" << std::endl;
+#endif
+    getchar();
 #endif
 }
