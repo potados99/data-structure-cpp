@@ -1,55 +1,45 @@
 //
-//  main.cpp
+//  Test.cpp
 //  cpp-test
 //
 //  Created by POTADOS on 2018. 5. 17..
-//  Copyright © 2018년 POTADOS. All rights reserved.
+//  Copyright © 2018 POTADOS. All rights reserved.
 //
-
-#define SINGLE_LINKED_LIST
-// #define STACK
-// #define QUEUE
-// #define TREE
-
-
+//  Please comment out at least one below.
+//
 
 #include "Test.hpp"
 
-int main(int argc, const char * argv[]) {
-    Test tester;
+#ifdef LINKED_LIST
+#include "LinkedList.hpp"
+using namespace LinkedList;
 
-    tester.SetTest();
-    tester.DoTest();
-    return 0;
-}
+#elif defined STACK
 
+#endif
 
-
-
-#if defined SINGLE_LINKED_LIST || DUAL_LINKED_LIST
+#if defined LINKED_LIST
 void Test::ListTest() {
+    
     List<std::string> strList;
-    List<ListNode<int>> objectList;
     
-    // Appending to string list
-    std::string str = "Test String";
-    for (int i = 0; i < 10; ++ i ) {
-        strList.Append(str);
-        str.append("!");
-    }
+    strList.Append("Hello");
+    strList.Append("World");
+    strList.Append("!");
     
-    // Appending to object list
-    for (int i = 0; i < 10; ++ i )
-        objectList.Append(ListNode<int>(i, nullptr));
+    strList.Print();
     
-    // Testing ForEach method
-    strList.ForEach([](std::string data) {
-        std::cout << data << std::endl;
-    });
+    List<int> intList;
+    int count = 0;
     
-    objectList.ForEach([](ListNode<int> node) {
-        std::cout << node.data << std::endl;
-    });
+    // Inserting to int list
+    intList.Append(36);             // [36]
+    intList.Insert(0, 77);          // [77, 36]
+    intList.Insert(0, 88);          // [88, 77, 36]
+    intList.Insert(1, 96);          // [88, 96, 77, 36]
+    intList.Insert(-1, 100);        // [88, 96, 77, 100, 36]
+    intList.Insert(-2, 1101);       // [88, 96, 77, 1101, 100, 36]
+    
 }
 #elif defined STACK
 void Test::StackTest() {
@@ -57,16 +47,10 @@ void Test::StackTest() {
 }
 #endif
 
-
-
-void Test::SetTest() {
-#if defined SINGLE_LINKED_LIST || defined DUAL_LINKED_LIST
-    this->TestFunction = this->ListTest;
-#elif defined STACK
-    //~~
-#endif
-}
-
 void Test::DoTest() {
-    this->TestFunction();
+#if defined LINKED_LIST
+    ListTest();
+#elif defined STACK
+    StackTest();
+#endif
 }
