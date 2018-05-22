@@ -55,10 +55,22 @@ void Test::ListTest() {
     std::cout << "Total of them is " << count << std::endl;
     
 }
+
 #elif defined STACK
 void Test::StackTest() {
     
 }
+
+#elif defined LINKED_QUEUE
+void Test::QueueTest() {
+    
+}
+
+#elif defined LINKED_TREE
+void Test::TreeTest() {
+    
+}
+
 #endif
 
 void Test::DoTest() {
