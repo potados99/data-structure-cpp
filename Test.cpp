@@ -76,19 +76,23 @@ void Test::TreeTest() {
 void Test::DoTest() {
 #if defined LINKED_LIST
     ListTest();
+    
 #elif defined LINKED_STACK
     StackTest();
+    
 #elif defined LINKED_QUEUE
     QueueTest();
+    
 #elif defined LINKED_TREE
     TreeTest();
+    
 #endif
 
 #ifdef __APPLE__
     std::cout << std::endl << ":)" << std::endl;
     
 #elif defined __unix__
-	std::cout << std::endl << ":o" << std::endl;
+	std::cout << std::endl << ":D" << std::endl;
 
 #elif defined _MSC_VER
 	std::cout << std::endl << ":(" << std::endl;
