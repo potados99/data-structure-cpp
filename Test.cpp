@@ -84,8 +84,12 @@ void Test::DoTest() {
     TreeTest();
 #endif
 
-#ifdef _MSC_VER
+#ifdef __APPLE__
+    std::cout << std::endl << ":)" << std::endl;
+    
+#elif defined _MSC_VER
 	std::cout << std::endl << "God damn Micro Soft" << std::endl;
 	getchar();
+    
 #endif
 }
