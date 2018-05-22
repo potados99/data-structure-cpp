@@ -19,9 +19,8 @@
 namespace LinkedList {
     
 #pragma mark ListNode
+    
     // Public
-    //
-    //
     template <typename Element>
     Element ListNode<Element>::_Data() {
         return _data;
@@ -85,9 +84,8 @@ namespace LinkedList {
 
     
 #pragma mark List
+    
     // Public
-    //
-    //
     template <typename Element>
     List<Element>::List() {
         this->_head = nullptr;
@@ -213,8 +211,6 @@ namespace LinkedList {
     
 
     // Private
-    //
-    //
     template <typename Element>
     ListNode<Element> * List<Element>::_GetNodeAtIndex(int index) {
         if (IsEmpty()) {
