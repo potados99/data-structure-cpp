@@ -9,12 +9,22 @@
 //
 
 #include "Test.hpp"
-#include <list>
+
 #ifdef LINKED_LIST
 #include "LinkedList.hpp"
 using namespace LinkedList;
 
-#elif defined STACK
+#elif defined LINKED_STACK
+#include "LinkedStack.hpp"
+using namespace LinkedStack;
+
+#elif defined LINKED_QUEUE
+#include "LinkedQueue.hpp"
+using namespace LinkedQueue;
+
+#elif defined LINKED_TREE
+#include "LinkedTree.hpp"
+using namespace LinkedTree;
 
 #endif
 
@@ -58,7 +68,11 @@ void Test::StackTest() {
 void Test::DoTest() {
 #if defined LINKED_LIST
     ListTest();
-#elif defined STACK
+#elif defined LINKED_STACK
     StackTest();
+#elif defined LINKED_QUEUE
+    QueueTest();
+#elif defined LINKED_TREE
+    TreeTest();
 #endif
 }

@@ -24,7 +24,6 @@ namespace LinkedList {
         ListNode *              _next;
         
     public:
-        
         Element                 _Data(void);
         ListNode *              _Prev(void);
         ListNode *              _Next(void);
