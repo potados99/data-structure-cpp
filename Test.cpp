@@ -13,6 +13,9 @@
 #ifdef LINKED_LIST
 #include "LinkedList.hpp"
 
+#elif defined ARRAY_STACK
+#include "ArrayStack.hpp"
+
 #elif defined LINKED_STACK
 #include "LinkedStack.hpp"
 
@@ -26,15 +29,16 @@
 
 #if defined LINKED_LIST
 void Test::ListTest() {
-    
-    LinkedList::List<std::string> strList;
-    
-    strList.Append("Hello");
-    strList.Append("World");
-    strList.Append("!");
-    strList.Insert(0, "I say: ");
-    
-    strList.Print();
+//
+//    LinkedList::List<std::string> strList;
+//
+//    strList.Append("Hello");
+//    strList.Append("World");
+//    strList.Append("!");
+//    strList.Insert(0, "I say: ");
+//
+//    strList.Print();
+//
     
     LinkedList::List<int> intList;
     int count = 0;
@@ -56,9 +60,18 @@ void Test::ListTest() {
     
 }
 
-#elif defined STACK
+#elif defined ARRAY_STACK || defined LINKED_STACK
 void Test::StackTest() {
+    ArrayStack::Stack<int> intStack(0);
     
+    for (int i = 0; i < 20; ++ i) {
+        intStack.Push(i);
+    }
+
+    for (int i = 0; i < 20; ++ i) {
+        std::cout << intStack.Pop() << std::endl;
+    }
+
 }
 
 #elif defined LINKED_QUEUE
@@ -77,7 +90,7 @@ void Test::DoTest() {
 #if defined LINKED_LIST
     ListTest();
     
-#elif defined LINKED_STACK
+#elif defined ARRAY_STACK || defined LINKED_STACK
     StackTest();
     
 #elif defined LINKED_QUEUE

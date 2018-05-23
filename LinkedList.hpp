@@ -24,19 +24,19 @@ namespace LinkedList {
         ListNode *              _next;
         
     public:
-        Element                 _Data(void);
-        ListNode *              _Prev(void);
-        ListNode *              _Next(void);
-        void                    _SetData(Element data);
-        void                    _SetPrev(ListNode * prev);
-        void                    _SetNext(ListNode * next);
-        
         ListNode();
         ListNode(Element data);
         ListNode(Element data, ListNode * next);
         ListNode(Element data, ListNode * prev, ListNode * next);
         ~ListNode();
         
+        Element                 _Data(void);
+        ListNode *              _Prev(void);
+        ListNode *              _Next(void);
+        void                    _SetData(Element data);
+        void                    _SetPrev(ListNode * prev);
+        void                    _SetNext(ListNode * next);
+
     };
     
     template <typename Element>

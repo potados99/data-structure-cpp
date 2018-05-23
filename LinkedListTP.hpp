@@ -9,8 +9,6 @@
 #ifndef LinkedListTP_hpp
 #define LinkedListTP_hpp
 
-#include "LinkedList.hpp"
-
 #ifndef _DEBUG_PIN
 #define _DEBUG_MSG_FOR_LIST
 #include "debug.hpp"
@@ -21,6 +19,38 @@ namespace LinkedList {
 #pragma mark ListNode
     
     // Public
+    template <typename Element>
+    ListNode<Element>::ListNode() {
+        this->_prev = nullptr;
+        this->_next = nullptr;
+    }
+    
+    template <typename Element>
+    ListNode<Element>::ListNode(Element data) {
+        this->_data = data;
+        this->_prev = nullptr;
+        this->_next = nullptr;
+    }
+    
+    template <typename Element>
+    ListNode<Element>::ListNode(Element data, ListNode * next) {
+        this->_data = data;
+        this->_prev = nullptr;
+        this->_next = next;
+    }
+    
+    template <typename Element>
+    ListNode<Element>::ListNode(Element data, ListNode * prev, ListNode * next) {
+        this->_data = data;
+        this->_prev = prev;
+        this->_next = next;
+    }
+    
+    template <typename Element>
+    ListNode<Element>::~ListNode() {
+    }
+
+    
     template <typename Element>
     Element ListNode<Element>::_Data() {
         return _data;
@@ -51,37 +81,6 @@ namespace LinkedList {
         _next = next;
     }
     
-    template <typename Element>
-    ListNode<Element>::ListNode() {
-        this->_prev = nullptr;
-        this->_next = nullptr;
-    }
-    
-    template <typename Element>
-    ListNode<Element>::ListNode(Element data) {
-        this->_data = data;
-        this->_prev = nullptr;
-        this->_next = nullptr;
-    }
-    
-    template <typename Element>
-    ListNode<Element>::ListNode(Element data, ListNode * next) {
-        this->_data = data;
-        this->_prev = nullptr;
-        this->_next = next;
-    }
-    
-    template <typename Element>
-    ListNode<Element>::ListNode(Element data, ListNode * prev, ListNode * next) {
-        this->_data = data;
-        this->_prev = prev;
-        this->_next = next;
-    }
-
-    template <typename Element>
-    ListNode<Element>::~ListNode() {
-    }
-
     
 #pragma mark List
     
@@ -137,7 +136,7 @@ namespace LinkedList {
     template <typename Element>
     void List<Element>::Insert(int index, Element data) {
         if (IsEmpty()) {
-            Error(LIST_EMPTY);
+            ERROR(_LIST_EMPTY)
         }
         
         unsigned int targetIndex = _GetSafeIndex(index);
@@ -171,7 +170,7 @@ namespace LinkedList {
     template <typename Element>
     void List<Element>::ForEach(std::function<void(Element)> action) {
         if (IsEmpty()) {
-            Error(LIST_EMPTY);
+            ERROR(_LIST_EMPTY)
         }
         
         for (_currentNode = _head;
@@ -185,7 +184,7 @@ namespace LinkedList {
     template <typename Element>
     void List<Element>::Print() {
         if (IsEmpty()){
-            Error(LIST_EMPTY);
+            ERROR(_LIST_EMPTY)
         }
         
         std::cout << "[";
@@ -214,13 +213,13 @@ namespace LinkedList {
     template <typename Element>
     ListNode<Element> * List<Element>::_GetNodeAtIndex(int index) {
         if (IsEmpty()) {
-            Error(LIST_EMPTY);
+            ERROR(_LIST_EMPTY)
         }
         
         unsigned int targetIndex = _GetSafeIndex(index);
         
         if (targetIndex > _length) {
-            Error(INDEX_OUT);
+            ERROR(_INDEX_OUT)
         }
         
         int currentIndex = 0;
@@ -228,7 +227,7 @@ namespace LinkedList {
         
         while (currentIndex < targetIndex) {
             if (_currentNode == nullptr) {
-                Error(NODE_NULL);
+                ERROR(_NODE_NULL)
             }
             
             currentIndex += 1;
@@ -249,12 +248,12 @@ namespace LinkedList {
         
         if (unsafeIndex < 0) {
             if ((unsafeIndex * -1) > _length) {
-                Error(INDEX_OUT);
+                ERROR(_INDEX_OUT)
             }
             safeIndex = _length + unsafeIndex;
         } else {
             if (unsafeIndex > _length - 1) {
-                Error(INDEX_OUT);
+                ERROR(_INDEX_OUT)
             }
             safeIndex = unsafeIndex;
         }
@@ -265,7 +264,7 @@ namespace LinkedList {
     template <typename Element>
     void List<Element>::_ForEachNode(std::function<void(ListNode<Element> *)> action) {
         if (IsEmpty()) {
-            Error(LIST_EMPTY);
+            ERROR(_LIST_EMPTY)
         }
         
         for (_currentNode = _head;

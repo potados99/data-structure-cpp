@@ -11,13 +11,14 @@
 
 // **
 // You can uncomment at least one line below:
- #define LINKED_LIST
+// #define LINKED_LIST
+ #define ARRAY_STACK
 // #define LINKED_STACK
 // #define LINKED_QUEUE
 // #define LINKED_TREE
 // **
 
-#if !(defined LINKED_LIST || defined LINKED_STACK || defined LINKED_QUEUE || defined LINKED_TREE)
+#if !(defined LINKED_LIST || defined ARRAY_STACK || defined LINKED_STACK || defined LINKED_QUEUE || defined LINKED_TREE)
 #error Please uncomment at least one line in Test.hpp
 #endif
 
