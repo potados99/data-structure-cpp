@@ -9,8 +9,11 @@
 #ifndef LinkedListTP_hpp
 #define LinkedListTP_hpp
 
-#define _DEBUG_MSG_FOR_LIST
 #include "debug.hpp"
+
+#define _LIST_EMPTY "List is empty."
+#define _NODE_NULL "Node is null."
+#define _INDEX_OUT "Index is out of range."
 
 namespace LinkedList {
     

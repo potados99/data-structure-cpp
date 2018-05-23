@@ -22,22 +22,3 @@
     exit(1);
 
 #endif /* debug_h */
-
-/* common */
-#if defined _DEBUG_MSG_FOR_LIST
-#define _LIST_EMPTY "List is empty."
-#define _NODE_NULL "Node is null."
-#define _INDEX_OUT "Index is out of range."
-#endif
-
-#if defined _DEBUG_MSG_FOR_STACK
-#define _INIT_SIZE_INVALID "Initial size cannot have negative value."
-#define _ALLOC_FAILED "Allocation failed."
-#define _STACK_EMPTY "Stack is empty"
-#endif
-
-#ifdef _DEBUG_MSG_FOR_QUEUE
-#endif
-
-#ifdef _DEBUG_MSG_FOR_TREE
-#endif

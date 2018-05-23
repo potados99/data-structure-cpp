@@ -9,9 +9,11 @@
 #ifndef ArrayStackTP_hpp
 #define ArrayStackTP_hpp
 
-#define _DEBUG_MSG_FOR_STACK
 #include "debug.hpp"
 
+#define _INIT_SIZE_INVALID "Initial size cannot have negative value."
+#define _ALLOC_FAILED "Allocation failed."
+#define _STACK_EMPTY "Stack is empty"
 #define _DEFAULT_STACK_SIZE 5
 
 namespace ArrayStack {
