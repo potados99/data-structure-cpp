@@ -11,7 +11,7 @@
 
 // **
 // You can uncomment at least one line below:
-// #define LINKED_LIST
+ #define LINKED_LIST
  #define ARRAY_STACK
 // #define LINKED_STACK
 // #define LINKED_QUEUE

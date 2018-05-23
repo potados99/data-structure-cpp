@@ -12,34 +12,28 @@
 
 #ifdef LINKED_LIST
 #include "LinkedList.hpp"
-
-#elif defined ARRAY_STACK
-#include "ArrayStack.hpp"
-
-#elif defined LINKED_STACK
-#include "LinkedStack.hpp"
-
-#elif defined LINKED_QUEUE
-#include "LinkedQueue.hpp"
-
-#elif defined LINKED_TREE
-#include "LinkedTree.hpp"
-
 #endif
+
+#ifdef ARRAY_STACK
+#include "ArrayStack.hpp"
+#endif
+
+#ifdef LINKED_STACK
+#include "LinkedStack.hpp"
+#endif
+
+#ifdef LINKED_QUEUE
+#include "LinkedQueue.hpp"
+#endif
+
+#ifdef LINKED_TREE
+#include "LinkedTree.hpp"
+#endif
+
 
 #if defined LINKED_LIST
 void Test::ListTest() {
-//
-//    LinkedList::List<std::string> strList;
-//
-//    strList.Append("Hello");
-//    strList.Append("World");
-//    strList.Append("!");
-//    strList.Insert(0, "I say: ");
-//
-//    strList.Print();
-//
-    
+
     LinkedList::List<int> intList;
     int count = 0;
     
@@ -49,7 +43,12 @@ void Test::ListTest() {
     intList.Insert(1, 16);
     intList.Insert(-1, 128);
     intList.Insert(-2, 64);
+    intList.Insert(-1, 9999);
     
+    intList.Print();
+
+    std::cout << "Poped " << intList.Pop(-2) << std::endl;
+
     intList.ForEach([&count](int data) {
         count += data;
     });
@@ -59,9 +58,12 @@ void Test::ListTest() {
     std::cout << "Total of them is " << count << std::endl;
     
 }
+#endif
 
-#elif defined ARRAY_STACK || defined LINKED_STACK
+#if defined ARRAY_STACK || defined LINKED_STACK
 void Test::StackTest() {
+    
+    std::cout << "\nTest for stack" << std::endl;
     ArrayStack::Stack<int> intStack(0);
     
     for (int i = 0; i < 20; ++ i) {
@@ -73,34 +75,38 @@ void Test::StackTest() {
     }
 
 }
+#endif
 
-#elif defined LINKED_QUEUE
+#if defined LINKED_QUEUE
 void Test::QueueTest() {
     
 }
+#endif
 
-#elif defined LINKED_TREE
+#if defined LINKED_TREE
 void Test::TreeTest() {
     
 }
-
 #endif
 
 void Test::DoTest() {
 #if defined LINKED_LIST
     ListTest();
-    
-#elif defined ARRAY_STACK || defined LINKED_STACK
-    StackTest();
-    
-#elif defined LINKED_QUEUE
-    QueueTest();
-    
-#elif defined LINKED_TREE
-    TreeTest();
-    
 #endif
 
+#if defined ARRAY_STACK || defined LINKED_STACK
+    StackTest();
+#endif
+
+#if defined LINKED_QUEUE
+    QueueTest();
+#endif
+
+#if defined LINKED_TREE
+    TreeTest();
+#endif
+
+    
 #ifdef __APPLE__
     std::cout << std::endl << ":)" << std::endl;
     

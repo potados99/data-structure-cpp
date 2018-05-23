@@ -9,10 +9,8 @@
 #ifndef LinkedListTP_hpp
 #define LinkedListTP_hpp
 
-#ifndef _DEBUG_PIN
 #define _DEBUG_MSG_FOR_LIST
 #include "debug.hpp"
-#endif
 
 namespace LinkedList {
     
@@ -158,13 +156,41 @@ namespace LinkedList {
     }
     
     template <typename Element>
-    Element List<Element>::Pop(int targetIndex) {
+    Element List<Element>::Pop(int index) {
+        if(IsEmpty()) {
+            ERROR(_LIST_EMPTY)
+        }
         
+        unsigned int targetIndex = _GetSafeIndex(index);
+
+        Element value = _GetNodeAtIndex(targetIndex)->_Data();
+        Delete(targetIndex);
+        
+        return value;
     }
     
     template <typename Element>
-    void List<Element>::Delete(int targetIndex) {
+    void List<Element>::Delete(int index) {
+        if(IsEmpty()) {
+            ERROR(_LIST_EMPTY)
+        }
         
+        unsigned int targetIndex = _GetSafeIndex(index);
+
+        _currentNode = _GetNodeAtIndex(targetIndex);
+        
+        ListNode<Element> * prev = _currentNode->_Prev();
+        ListNode<Element> * next = _currentNode->_Next();
+        
+        if (prev)
+            prev->_SetNext(next);
+        if (next)
+            next->_SetPrev(prev);
+        
+        delete _currentNode;
+        _currentNode = _head;
+        
+        -- _length;
     }
     
     template <typename Element>
